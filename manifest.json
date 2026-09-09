@@ -1,13 +1,1 @@
-{
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "KisanQueue – Farmer Procurement System",
-  "orientation": "any",
-  "scope": "/kisanQueue/",
-  "short_name": "KisanQueue",
-  "start_url": "/kisanQueue/",
-  "theme_color": "#2E7D32",
-  "id": "/kisanQueue/",
-  "description": "Farmer Procurement Queue and Status Tracking System"
-}
+
