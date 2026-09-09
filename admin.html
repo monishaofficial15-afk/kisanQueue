@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+   <title>KisanQueue - Admin Login</title>
+   <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg,#e8f5e9,#c8e6c9);
+        margin: 0;
+}
+
+.login-box {
+    width: 90%;
+    max-width: 400px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px #999;
+    text-align: center;
+}
+h1 {
+    colour: #2e7d32;
+}
+input {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+ }
+button {
+    width: 100%;
+    margin-top: 20px;
+    background: #2e7d32;
+    padding: 14px;
+    color:white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+ }
+    button:hover {
+       background: #1b5e20;
+}
+    #message {
+       margin-top: #1b5e20;
+       font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-box">
+
+     <h1> KisanQueue</h1>
+     <h2>👨‍💼Admin Login</h2>
+     <input type="text" id="username"placeholder="Admin Username">
+     <input type="password" id="password"placeholder="password">
+     <button onclick="adminLogin()">🔐Login</button>
+
+     <p id="message"></p>
+</div>
+<script>
+
+function adminLogin() {
+
+    let username =
+document.getElementById("username").value;
+
+       let password = 
+      document.getElementById("password").value; 
+     if (username === "admin" && password === "1234") 
+{
+  
+document.getElementById("message").innerHTML = 
+                  "✅LOGIN SUCCESSFUL!";
+
+         setTimeout(function() {
+           window.location.href = "admin-dashboard.html";
+             },1000);
+     } else {
+      
+document.getElementById("message").innerHTML = 
+           "❌ INVALID USERNAME OR PASSWORD";
+   }
+}
+
+</script>
+</body>
+</html>

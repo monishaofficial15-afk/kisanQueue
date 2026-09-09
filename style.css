@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    margin: 0;
+    color:#333;
+}
+
+header {
+    background: linear-gradient(135deg,#1b5e20,#43a047);
+    colour: white;
+    text-align: center;
+    padding: 30px 15px;
+    box-shadow: 0 3px 10px #999;
+
+}
+
+header h1 {
+    margin:0;
+    font-size:34px;
+}
+
+header p {
+    margin:8px;
+    font-size:17px;
+}
+
+.container {
+    width: 90%;
+    max-width: 650px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px #bbb;
+}
+
+h2 {
+    text-align: center;
+    color: #2e7d32;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    border-color: #43a047;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+#result,
+#bookingResult {
+    margin-top: 25px;
+    padding: 18px;
+    background: #e8f5e9;
+    border-radius: 12px;
+    text-align: center;
+    border-left: 5px solid #2e7d32;
+}
+.schedule,
+.queue,
+.admin {
+    margin-top: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #ccc;
+}
+
+.slot {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f1f8e9;
+    border-radius: 10px;
+    border-left: 5px solid #66bb6a;
+}
+
+.slot h3 {
+
+    margin-top:0;
+    color: #2e7d32;
+}
+.queue {
+    background: #fffde7;
+    border-left: 6px solid #fbc02d;
+}
+.admin {
+    background: #e3f2fd;
+    border-left: 6px solid #1976d2;
+}
+.queue p,
+.admin p {
+    font-size: 17px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+
+    header h1 {
+       font-size: 27px;
+    }
+    .container {
+       width: 88%;
+       padding: 18px;
+    }
+    button {
+       font-size: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f7f2;
+    margin: 0;
+}
+
+header {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #bbb;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+#result {
+    margin-top: 25px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    text-align: center;
+}
+.container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

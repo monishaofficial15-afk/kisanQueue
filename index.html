@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KisanQueue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🌾 KisanQueue</h1>
+    <p>Farmer Procurement Queue & Status Tracking</p>
+</header>
+<div class="language">
+    <label>🌐 Language</label>
+
+    <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+    </select>
+</div>
+
+<div class="container">
+
+    <h2>👨‍🌾 Farmer Registration</h2>
+
+    <label>Farmer Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label>Mobile Number</label>
+    <input type="text" id="mobile" placeholder="Enter mobile number">
+
+    <label>Village</label>
+    <input type="text" id="village" placeholder="Enter village">
+
+    <label>Crop</label>
+    <select id="crop">
+        <option>Paddy</option>
+        <option>Wheat</option>
+        <option>Maize</option>
+        <option>Cotton</option>
+    </select>
+
+    <label>Quantity (kg)</label>
+    <input type="number" id="quantity" placeholder="Enter quantity">
+
+    <label>Procurement Centre</label>
+    <select id="centre">
+        <option>Salem Procurement Centre</option>
+        <option>Karipatti Procurement Centre</option>
+        <option>Attur Procurement Centre</option>
+    </select>
+
+    <label>Select Time Slot</label>
+    <select id="slot">
+        <option>9:00 AM - 11:00 AM</option>
+        <option>11:00 AM - 1:00 PM</option>
+        <option>2:00 PM - 4:00 PM</option>
+    </select>
+
+    <button onclick="generateToken()">🎫 Get Token</button>
+
+    <div id="result"></div>
+
+</div>
+<div class="schedule">
+
+    <h2>📅 Procurement Schedule</h2>
+
+    <div class="slot">
+        <h3>06 September 2026</h3>
+        <p>🕘 9:00 AM - 11:00 AM</p>
+        <p>Available Slots: 8</p>
+        <button onclick="bookSlot('06 Sep - 9 AM to 11 AM')">
+            Book Slot
+        </button>
+    </div>
+
+    <div class="slot">
+        <h3>06 September 2026</h3>
+        <p>🕚 11:00 AM - 1:00 PM</p>
+        <p>Available Slots: 5</p>
+        <button onclick="bookSlot('06 Sep - 11 AM to 1 PM')">
+            Book Slot
+        </button>
+    </div>
+
+    <div class="slot">
+        <h3>07 September 2026</h3>
+        <p>🕘 9:00 AM - 11:00 AM</p>
+        <p>Available Slots: 12</p>
+        <button onclick="bookSlot('07 Sep - 9 AM to 11 AM')">
+            Book Slot
+        </button>
+    </div>
+
+    <div id="bookingResult"></div>
+
+</div>
+<div class="token-search">
+
+    <h2>🔎 Token Status</h2>
+
+    <label>Enter Token Number</label>
+
+    <input type="number" id="searchToken" placeholder="Enter token number">
+
+    <button onclick="searchToken()">🔍 Check Status</button>
+
+    <div id="searchResult"></div>
+
+</div>
+<div class="queue">
+
+    <h2>📊 Live Queue Status</h2>
+
+    <p>
+        <b>Your Token:</b>
+        <span id="yourToken">27</span>
+    </p>
+
+    <p>
+        <b>Current Token:</b>
+        <span id="currentToken">0</span>
+    </p>
+
+    <p>
+        <b>People Ahead:</b>
+        <span id="peopleAhead">40</span>
+    </p>
+
+    <p>
+        <b>Estimated Waiting Time:</b>
+        <span id="waitingTime">400</span> minutes
+    </p>
+ssss
+    <p>
+        <b>Status:</b>
+        <span id="queueStatus">🟡 Waiting</span>
+    </p>
+
+</div>
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

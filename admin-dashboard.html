@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KisanQueue - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🔐 Admin Dashboard</h1>
+    <p>KisanQueue - Queue Management</p>
+</header>
+
+<div class="language">
+    <label>🌐 Language</label>
+
+    <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+    </select>
+</div>
+
+<div class="container">
+
+    <h2 id="dashboardTitle">📊 Live Queue</h2>
+
+    <p>
+        <b id="currentTokenLabel">Current Token:</b>
+        <span id="currentToken">23</span>
+    </p>
+
+    <p>
+        <b id="peopleWaitingLabel">People Waiting:</b>
+        <span id="peopleWaiting">4</span>
+    </p>
+
+    <p>
+        <b id="waitingTimeLabel">Estimated Waiting Time:</b>
+        <span id="waitingTime">40</span> minutes
+    </p>
+
+    <p>
+        <b id="queueStatusLabel">Queue Status:</b>
+        <span id="status">🟢 Queue Active</span>
+    </p>
+
+    <button id="nextButton" onclick="nextToken()">
+        ▶️ Call Next Token
+    </button>
+
+<button onclick="resetQueue()">
+    🔄 Reset Queue
+</button>
+
+
+
+<div class="container">
+
+    <h2>📈 Admin Statistics</h2>
+
+    <p>
+        👨‍🌾 <b>Total Farmers:</b>
+        <span id="totalFarmers">40</span>
+    </p>
+
+    <p>
+        🎫 <b>Tokens Served:</b>
+        <span id="tokensServed">0</span>
+    </p>
+
+    <p>
+        ⏳ <b>People Waiting:</b>
+        <span id="statsWaiting">4</span>
+    </p>
+
+</div>
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    set,
+    onValue
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+
+// ================= FIREBASE =================
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAqMANJ3hfwhwUsXBcA1plgudmLk16SGnA",
+    authDomain: "kisanqueue-3f950.firebaseapp.com",
+    databaseURL: "https://kisanqueue-3f950-default-rtdb.firebaseio.com",
+    projectId: "kisanqueue-3f950",
+    storageBucket: "kisanqueue-3f950.firebasestorage.app",
+    messagingSenderId: "227967434572",
+    appId: "1:227967434572:web:1e6775e3cb61e994c6d9e9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+
+// ================= VARIABLES =================
+
+let currentToken = 0;
+let peopleWaiting = 40;
+
+
+// ================= FIREBASE DATA =================
+
+const queueRef = ref(db, "queue");
+
+
+// Read current queue
+
+onValue(queueRef, (snapshot) => {
+
+    const data = snapshot.val();
+
+    if (data) {
+
+        currentToken = Number(data.currentToken) || 0;
+        peopleWaiting = Number(data.peopleWaiting) || 0;
+
+    }
+
+    updateDashboard();
+    updateStatistics();
+
+});
+
+
+// ================= UPDATE DASHBOARD =================
+
+function updateDashboard() {
+
+    document.getElementById("currentToken").innerText =
+        currentToken;
+
+    document.getElementById("peopleWaiting").innerText =
+        peopleWaiting;
+
+    document.getElementById("waitingTime").innerText =
+        peopleWaiting * 20;
+
+    let language =
+        document.getElementById("language").value;
+
+    if (peopleWaiting === 0) {
+
+        document.getElementById("status").innerHTML =
+            "🟢 All Farmers Served";
+
+    } else {
+
+        if (language === "ta") {
+
+            document.getElementById("status").innerHTML =
+                "🟡 வரிசை செயல்பாட்டில்";
+
+        } else {
+
+            document.getElementById("status").innerHTML =
+                "🟡 Queue Active";
+
+        }
+
+    }
+
+}
+
+
+// ================= NEXT TOKEN =================
+
+window.nextToken = function () {
+
+    if (peopleWaiting > 0) {
+
+        currentToken++;
+        peopleWaiting--;
+
+        set(queueRef, {
+
+            currentToken: currentToken,
+            peopleWaiting: peopleWaiting
+
+        });
+
+    }
+
+};
+// ================= RESET QUEUE =================
+
+window.resetQueue = function () {
+
+    set(queueRef, {
+        currentToken: 0,
+        peopleWaiting: 40
+    });
+
+};
+
+// ================= STATISTICS =================
+
+function updateStatistics() {
+
+    document.getElementById("totalFarmers").innerText =
+        40;
+
+    document.getElementById("tokensServed").innerText =
+        currentToken;
+
+    document.getElementById("statsWaiting").innerText =
+        peopleWaiting;
+
+}
+
+
+// ================= LANGUAGE =================
+
+window.changeLanguage = function () {
+
+    let language =
+        document.getElementById("language").value;
+
+    if (language === "ta") {
+
+        document.querySelector("header p").innerText =
+            "கொள்முதல் வரிசை மேலாண்மை";
+
+        document.getElementById("dashboardTitle").innerHTML =
+            "📊 நேரடி வரிசை";
+
+        document.getElementById("currentTokenLabel").innerText =
+            "தற்போதைய டோக்கன்:";
+
+        document.getElementById("peopleWaitingLabel").innerText =
+            "காத்திருக்கும் விவசாயிகள்:";
+
+        document.getElementById("waitingTimeLabel").innerText =
+            "மதிப்பிடப்பட்ட காத்திருப்பு நேரம்:";
+
+        document.getElementById("queueStatusLabel").innerText =
+            "வரிசை நிலை:";
+
+        document.getElementById("nextButton").innerHTML =
+            "▶️ அடுத்த டோக்கன்";
+
+    } else {
+
+        location.reload();
+
+    }
+
+    updateDashboard();
+
+};
+
+
+// ================= START =================
+
+updateDashboard();
+updateStatistics();
+
+</script>
+
+</script>
+
+</body>
+</html>
